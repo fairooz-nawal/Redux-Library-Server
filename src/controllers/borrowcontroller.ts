@@ -38,12 +38,12 @@ export const createBorrow = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteBorrow = async (req: Request, res: Response) => {
+export const deleteBorrow = async (req: Request, res: Response): Promise<void>  => {
     try {
       const { id } = req.params;
       const deletedBook = await Borrow.deleteOne({ serial_id: id });
       if (!deletedBook) {
-        return res.status(404).json({ message: "Book not found" });
+         res.status(404).json({ message: "Book not found" });
       }
       res.status(200).json({ message: "Book deleted successfully" });
     } catch (err) {
@@ -52,7 +52,7 @@ export const deleteBorrow = async (req: Request, res: Response) => {
   };
 
 
-  export const editBorrow = async (req: Request, res: Response) => {
+  export const editBorrow = async (req: Request, res: Response): Promise<void>  => {
     try {
       const { id } = req.params;
       const { title, isbn, quantity } = req.body;
@@ -61,7 +61,7 @@ export const deleteBorrow = async (req: Request, res: Response) => {
         { $set: { title, isbn, quantity } }
         , { new: true });
       if (!updatedBorrow) {
-        return res.status(404).json({ message: "Borrow not found" });
+        res.status(404).json({ message: "Borrow not found" });
       }
       res.status(200).json({
         message: "Borrow updated successfully",

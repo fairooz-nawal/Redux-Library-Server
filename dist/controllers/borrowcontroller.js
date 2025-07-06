@@ -49,7 +49,7 @@ const deleteBorrow = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         const { id } = req.params;
         const deletedBook = yield borrow_1.default.deleteOne({ serial_id: id });
         if (!deletedBook) {
-            return res.status(404).json({ message: "Book not found" });
+            res.status(404).json({ message: "Book not found" });
         }
         res.status(200).json({ message: "Book deleted successfully" });
     }
@@ -65,7 +65,7 @@ const editBorrow = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         // console.log(id);
         const updatedBorrow = yield borrow_1.default.findOneAndUpdate({ serial_id: Number(id) }, { $set: { title, isbn, quantity } }, { new: true });
         if (!updatedBorrow) {
-            return res.status(404).json({ message: "Borrow not found" });
+            res.status(404).json({ message: "Borrow not found" });
         }
         res.status(200).json({
             message: "Borrow updated successfully",

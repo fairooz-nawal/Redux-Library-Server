@@ -36,12 +36,12 @@ export const createBook = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteBook = async (req: Request, res: Response) => {
+export const deleteBook = async (req: Request, res: Response): Promise<void>  => {
   try {
     const { id } = req.params;
     const deletedBook = await Book.deleteOne({ serial_id: id });
     if (!deletedBook) {
-      return res.status(404).json({ message: "Book not found" });
+       res.status(404).json({ message: "Book not found" });
     }
     res.status(200).json({ message: "Book deleted successfully" });
   } catch (err) {
@@ -51,7 +51,7 @@ export const deleteBook = async (req: Request, res: Response) => {
 
 
 
-export const editBooks = async (req: Request, res: Response) => {
+export const editBooks = async (req: Request, res: Response): Promise<void>  => {
   try {
     const { id } = req.params;
     const { title, author, genre, isbn, copies } = req.body;
@@ -60,7 +60,7 @@ export const editBooks = async (req: Request, res: Response) => {
       { $set: { title, author, genre, isbn, copies } }
       , { new: true });
     if (!updatedBorrow) {
-      return res.status(404).json({ message: "Book not found" });
+       res.status(404).json({ message: "Book not found" });
     }
     res.status(200).json({
       message: "Book updated successfully",
