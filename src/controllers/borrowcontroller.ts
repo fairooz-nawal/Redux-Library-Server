@@ -56,7 +56,7 @@ export const deleteBorrow = async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       const { title, isbn, quantity } = req.body;
-      console.log(id);
+      // console.log(id);
       const updatedBorrow = await Borrow.findOneAndUpdate( { serial_id: Number(id )} , 
         { $set: { title, isbn, quantity } }
         , { new: true });

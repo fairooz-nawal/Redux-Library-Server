@@ -55,7 +55,7 @@ export const editBooks = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { title, author, genre, isbn, copies } = req.body;
-    console.log(id);
+    // console.log(id);
     const updatedBorrow = await Book.findOneAndUpdate( { serial_id: Number(id )} , 
       { $set: { title, author, genre, isbn, copies } }
       , { new: true });

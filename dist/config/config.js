@@ -22,7 +22,7 @@ const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
             throw new Error("MONGODB_URI environment variable is not set");
         }
         const conn = yield mongoose_1.default.connect(process.env.MONGODB_URI);
-        console.log(`MongoDB Connected: ${conn.connection.host}`);
+        // console.log(`MongoDB Connected: ${conn.connection.host}`);
     }
     catch (error) {
         console.log(error);

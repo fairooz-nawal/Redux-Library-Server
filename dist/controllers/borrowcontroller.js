@@ -62,7 +62,7 @@ const editBorrow = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     try {
         const { id } = req.params;
         const { title, isbn, quantity } = req.body;
-        console.log(id);
+        // console.log(id);
         const updatedBorrow = yield borrow_1.default.findOneAndUpdate({ serial_id: Number(id) }, { $set: { title, isbn, quantity } }, { new: true });
         if (!updatedBorrow) {
             return res.status(404).json({ message: "Borrow not found" });

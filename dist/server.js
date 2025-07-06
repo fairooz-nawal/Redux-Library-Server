@@ -20,5 +20,5 @@ dotenv_1.default.config();
 app.use("/api", librarydataroute_1.default);
 app.use("/api", borrowroute_1.default);
 app.listen(process.env.port, () => {
-    console.log(`Server running on port ${process.env.port}`);
+    // console.log(`Server running on port ${process.env.port}`);
 });

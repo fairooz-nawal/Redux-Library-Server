@@ -64,7 +64,7 @@ const editBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
         const { title, author, genre, isbn, copies } = req.body;
-        console.log(id);
+        // console.log(id);
         const updatedBorrow = yield library_1.default.findOneAndUpdate({ serial_id: Number(id) }, { $set: { title, author, genre, isbn, copies } }, { new: true });
         if (!updatedBorrow) {
             return res.status(404).json({ message: "Book not found" });
